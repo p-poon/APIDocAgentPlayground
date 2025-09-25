@@ -1,0 +1,5 @@
+<h1>{{ api_info.info.title }}</h1>
+<p>{{ api_info.info.description }}</p>
+{% for endpoint in api_info.endpoints %}
+  {% include 'endpoint_template.html.j2' %}
+{% endfor %}

@@ -1,0 +1,10 @@
+<h3>{{ endpoint.method }} {{ endpoint.path }}</h3>
+<p>{{ endpoint.summary }}</p>
+<h4>Request Body</h4>
+<pre>{{ endpoint.requestBody | tojson(2) }}</pre>
+<h4>Responses</h4>
+<ul>
+{% for status, response in endpoint.responses.items() %}
+  <li>{{ status }} - {{ response.description }}</li>
+{% endfor %}
+</ul>
