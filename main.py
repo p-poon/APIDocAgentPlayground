@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 import os
 import json # Used for tojson filter in Jinja2
+from slugify import slugify 
 
 def analyze_openapi_spec_json(file_path):
     """
@@ -46,6 +47,9 @@ def generate_documentation(api_info, template_dir, output_dir):
     # the 'value' argument is automatically passed by Jinja2
     # Add a filter to convert dicts to formatted JSON
     env.filters['tojson'] = lambda value, indent=None: json.dumps(value,indent=indent)
+
+    # Register the slugify function
+    env.filters['slugify'] = slugify
 
     # Render the main template
     main_template = env.get_template('main_template.html.j2')

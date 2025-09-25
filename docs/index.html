@@ -1,7 +1,33 @@
-<h1>To-Do List API</h1>
-<p>A simple API for managing a list of to-do items.</p>
-
-  <h3>GET /items</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List API</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>API Endpoints</h2>
+            </div>
+            <ul class="nav-list">
+                
+                    <li><a href="#get-items">GET /items</a></li>
+                
+                    <li><a href="#post-items">POST /items</a></li>
+                
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1 class="api-title">To-Do List API</h1>
+            <p class="api-description">A simple API for managing a list of to-do items.</p>
+            
+                <section id="get-items" class="endpoint-section">
+                    <h3>GET /items</h3>
 <p>Retrieve all items</p>
 <h4>Request Body</h4>
 <pre>{}</pre>
@@ -11,8 +37,10 @@
   <li>200 - A list of items was successfully retrieved.</li>
 
 </ul>
-
-  <h3>POST /items</h3>
+                </section>
+            
+                <section id="post-items" class="endpoint-section">
+                    <h3>POST /items</h3>
 <p>Add a new item</p>
 <h4>Request Body</h4>
 <pre>{
@@ -31,3 +59,9 @@
   <li>201 - The item was successfully created.</li>
 
 </ul>
+                </section>
+            
+        </main>
+    </div>
+</body>
+</html>
