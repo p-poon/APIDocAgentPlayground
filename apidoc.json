@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "To-Do List API",
+    "description": "A simple API for managing a list of to-do items.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.todolist.com/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "Retrieve all items",
+        "description": "Returns a list of all to-do items in the system.",
+        "tags": [
+          "Items"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of items was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new item",
+        "description": "Adds a new to-do item to the list.",
+        "tags": [
+          "Items"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The item was successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the item.",
+            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the to-do item.",
+            "example": "Finish the report"
+          },
+          "isComplete": {
+            "type": "boolean",
+            "description": "Indicates whether the item is complete.",
+            "example": false
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  }
+}
