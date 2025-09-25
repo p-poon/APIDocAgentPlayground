@@ -1,0 +1,30 @@
+{% for api_section in api_sections %}
+    <section id="{{ api_section.id }}" class="content-section hidden">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">{{ api_section.title }}</h2>
+        {% for endpoint in api_section.endpoints %}
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <span class="method-badge method-{{ endpoint.method | lower }} mr-3">{{ endpoint.method }}</span>
+                    <code class="text-lg font-mono">{{ endpoint.path }}</code>
+                </div>
+                <p class="text-gray-600 mb-4">{{ endpoint.description }}</p>
+                
+                <h4 class="font-semibold text-gray-900 mb-2">Example Request</h4>
+                <div class="code-block p-4 mb-4">
+                    <pre class="text-sm text-gray-300 syntax-highlight">{{ endpoint.request_example }}</pre>
+                </div>
+                
+                <h4 class="font-semibold text-gray-900 mb-2">Example Response</h4>
+                <div class="code-block p-4">
+                    <pre class="text-sm text-gray-300 syntax-highlight">{{ endpoint.response_example }}</pre>
+                </div>
+                
+                {% if endpoint.interactive %}
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors" onclick="tryRequest('{{ endpoint.method }}', '{{ endpoint.path }}')">
+                        Try it out
+                    </button>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+{% endfor %}

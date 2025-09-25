@@ -3,65 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List API</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <title>To-Do List API Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .code-block {
+            background: #1e293b;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .syntax-highlight .keyword { color: #f472b6; }
+        .syntax-highlight .string { color: #34d399; }
+        .syntax-highlight .number { color: #fbbf24; }
+        .syntax-highlight .comment { color: #94a3b8; }
+        .nav-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3b82f6;
+        }
+        .nav-item.active {
+            background: rgba(59, 130, 246, 0.15);
+            border-left: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+        .method-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            text-transform: uppercase;
+        }
+        .method-get { background: #dcfce7; color: #166534; }
+        .method-post { background: #dbeafe; color: #1e40af; }
+        .method-put { background: #fef3c7; color: #92400e; }
+        .method-delete { background: #fee2e2; color: #991b1b; }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <h2>API Endpoints</h2>
+<body class="bg-gray-50 font-sans">
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-sm">API</span>
+                </div>
+                <h1 class="text-xl font-semibold text-gray-900">To-Do List API Documentation</h1>
             </div>
-            <ul class="nav-list">
-                
-                    <li><a href="#get-items">GET /items</a></li>
-                
-                    <li><a href="#post-items">POST /items</a></li>
-                
-            </ul>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm text-gray-500">v1.0.0</span>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                    Get API Key
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex pt-16">
+        <nav class="w-64 bg-white h-screen fixed left-0 top-16 border-r border-gray-200 overflow-y-auto">
+            <div class="p-6">
+                <div class="mb-6">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">API Endpoints</h3>
+                    <div class="space-y-1">
+                        
+                            <a href="#get-items" class="nav-item px-3 py-2 text-sm cursor-pointer transition-all">
+                                <span class="method-badge method-get">GET</span> /items
+                            </a>
+                        
+                            <a href="#post-items" class="nav-item px-3 py-2 text-sm cursor-pointer transition-all">
+                                <span class="method-badge method-post">POST</span> /items
+                            </a>
+                        
+                    </div>
+                </div>
+            </div>
         </nav>
-        
-        <main class="content">
-            <h1 class="api-title">To-Do List API</h1>
-            <p class="api-description">A simple API for managing a list of to-do items.</p>
-            
-                <section id="get-items" class="endpoint-section">
-                    <h3>GET /items</h3>
-<p>Retrieve all items</p>
-<h4>Request Body</h4>
-<pre>{}</pre>
-<h4>Responses</h4>
-<ul>
 
-  <li>200 - A list of items was successfully retrieved.</li>
+        <main class="flex-1 ml-64 p-8">
+            <div class="max-w-4xl">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">To-Do List API</h1>
+                <p class="text-lg text-gray-600 mb-6">A simple API for managing a list of to-do items.</p>
+                
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">API Reference</h2>
+                
+                    <section id="get-items" class="endpoint-section fade-in">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+    <div class="flex items-center mb-4">
+        <span class="method-badge method-get mr-3">GET</span>
+        <code class="text-lg font-mono">/items</code>
+    </div>
+    
+    <p class="text-gray-600 mb-4">Returns a list of all to-do items in the system.</p>
 
-</ul>
-                </section>
-            
-                <section id="post-items" class="endpoint-section">
-                    <h3>POST /items</h3>
-<p>Add a new item</p>
-<h4>Request Body</h4>
-<pre>{
-  "required": true,
-  "content": {
-    "application/json": {
-      "schema": {
-        "$ref": "#/components/schemas/Item"
+    <h4 class="font-semibold text-gray-900 mb-2">Parameters</h4>
+    <div class="code-block p-4 mb-4">
+        <pre class="text-sm text-gray-300 syntax-highlight">[]</pre>
+    </div>
+
+    
+
+    <h4 class="font-semibold text-gray-900 mb-2">Responses</h4>
+    <div class="code-block p-4 mb-4">
+        <pre class="text-sm text-gray-300 syntax-highlight">{
+  "200": {
+    "description": "A list of items was successfully retrieved.",
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Item"
+          }
+        }
       }
     }
   }
 }</pre>
-<h4>Responses</h4>
-<ul>
+    </div>
+</div>
+                    </section>
+                
+                    <section id="post-items" class="endpoint-section fade-in">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+    <div class="flex items-center mb-4">
+        <span class="method-badge method-post mr-3">POST</span>
+        <code class="text-lg font-mono">/items</code>
+    </div>
+    
+    <p class="text-gray-600 mb-4">Adds a new to-do item to the list.</p>
 
-  <li>201 - The item was successfully created.</li>
+    <h4 class="font-semibold text-gray-900 mb-2">Parameters</h4>
+    <div class="code-block p-4 mb-4">
+        <pre class="text-sm text-gray-300 syntax-highlight">[]</pre>
+    </div>
 
-</ul>
-                </section>
-            
+    
+    <h4 class="font-semibold text-gray-900 mb-2">Request Body</h4>
+    <div class="code-block p-4 mb-4">
+        <pre class="text-sm text-gray-300 syntax-highlight">{
+  "$ref": "#/components/schemas/Item"
+}</pre>
+    </div>
+    
+
+    <h4 class="font-semibold text-gray-900 mb-2">Responses</h4>
+    <div class="code-block p-4 mb-4">
+        <pre class="text-sm text-gray-300 syntax-highlight">{
+  "201": {
+    "description": "The item was successfully created.",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/Item"
+        }
+      }
+    }
+  }
+}</pre>
+    </div>
+</div>
+                    </section>
+                
+            </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.endpoint-section');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${targetId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -80% 0px' }); // Adjust these values as needed
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
