@@ -42,8 +42,10 @@ def generate_documentation(api_info, template_dir, output_dir):
     # Set up the Jinja2 environment
     env = Environment(loader=FileSystemLoader(template_dir))
     
+    # Create a custom filter that correctly uses the 'indent' argument
+    # the 'value' argument is automatically passed by Jinja2
     # Add a filter to convert dicts to formatted JSON
-    env.filters['tojson'] = json.dumps
+    env.filters['tojson'] = lambda value, indent=None: json.dumps(value,indent=indent)
 
     # Render the main template
     main_template = env.get_template('main_template.html.j2')
@@ -58,9 +60,13 @@ def generate_documentation(api_info, template_dir, output_dir):
 
 
 if __name__ == "__main__":
-    spec_file = 'apidoc.json'
-    template_dir = '/templates'
-    output_dir = '/docs_output'
+    # Get absolut path of the directory where script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the full paths to the template and output directories
+    spec_file = os.path.join(script_dir,'apidoc.json')
+    template_dir = os.path.join(script_dir,'templates') 
+    output_dir = os.path.join(script_dir,'docs_output')
     
     # 1. Analyze the spec
     api_data = analyze_openapi_spec_json(spec_file)

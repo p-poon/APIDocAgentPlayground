@@ -1,0 +1,33 @@
+<h1>To-Do List API</h1>
+<p>A simple API for managing a list of to-do items.</p>
+
+  <h3>GET /items</h3>
+<p>Retrieve all items</p>
+<h4>Request Body</h4>
+<pre>{}</pre>
+<h4>Responses</h4>
+<ul>
+
+  <li>200 - A list of items was successfully retrieved.</li>
+
+</ul>
+
+  <h3>POST /items</h3>
+<p>Add a new item</p>
+<h4>Request Body</h4>
+<pre>{
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Item"
+      }
+    }
+  }
+}</pre>
+<h4>Responses</h4>
+<ul>
+
+  <li>201 - The item was successfully created.</li>
+
+</ul>
