@@ -1,5 +1,34 @@
-<h1>{{ api_info.info.title }}</h1>
-<p>{{ api_info.info.description }}</p>
-{% for endpoint in api_info.endpoints %}
-  {% include 'endpoint_template.html.j2' %}
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ api_info.info.title }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>API Endpoints</h2>
+            </div>
+            <ul class="nav-list">
+                {% for endpoint in api_info.endpoints %}
+                    <li><a href="#{{ endpoint.method | lower }}-{{ endpoint.path | slugify }}">{{ endpoint.method | upper }} {{ endpoint.path }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1 class="api-title">{{ api_info.info.title }}</h1>
+            <p class="api-description">{{ api_info.info.description }}</p>
+            {% for endpoint in api_info.endpoints %}
+                <section id="{{ endpoint.method | lower }}-{{ endpoint.path | slugify }}" class="endpoint-section">
+                    {% include 'endpoint_template.html.j2' %}
+                </section>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+</html>
