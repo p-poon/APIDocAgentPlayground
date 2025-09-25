@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # Construct the full paths to the template and output directories
     spec_file = os.path.join(script_dir,'apidoc.json')
     template_dir = os.path.join(script_dir,'templates') 
-    output_dir = os.path.join(script_dir,'docs_output')
+    output_dir = os.path.join(script_dir,'docs')
     
     # 1. Analyze the spec
     api_data = analyze_openapi_spec_json(spec_file)
