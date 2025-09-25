@@ -98,3 +98,11 @@ You can easily customize the look and feel of your documentation by editing the 
 ## License 📄
 
 This project is licensed under the Apache 2.0 License. See the `LICENSE` file for details.
+
+-----
+
+## Acknowledgement to AI tools used for this project
+
+1. Google Gemini for the main project code
+2. Canva AI for helping with beautiful CSS designs
+3. Co-pilot for helping with some debugging
